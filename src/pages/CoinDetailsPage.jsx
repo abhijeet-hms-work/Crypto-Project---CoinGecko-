@@ -5,7 +5,9 @@ import { useParams } from "react-router-dom";
 import currencyStore from "../state/store";
 import parse from "html-react-parser";
 
-function CounDetailsPage() {
+import pageLoader from "../components/PageLoader/PageLoader";
+
+function CoinDetailsPage() {
   const { coinId } = useParams();
   const { currency } = currencyStore();
 
@@ -19,7 +21,11 @@ function CounDetailsPage() {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <pageLoader />
+      </div>
+    );
   }
 
   if (isError) {
@@ -64,4 +70,4 @@ function CounDetailsPage() {
     </>
   );
 }
-export default CounDetailsPage;
+export default CoinDetailsPage;
