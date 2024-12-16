@@ -5,7 +5,8 @@ import { useParams } from "react-router-dom";
 import currencyStore from "../state/store";
 import parse from "html-react-parser";
 
-import pageLoader from "../components/PageLoader/PageLoader";
+import PageLoader from "../components/PageLoader/PageLoader";
+import CoinInfoContainer from "../components/CoinInfo/CoinInfoContainer";
 
 function CoinDetailsPage() {
   const { coinId } = useParams();
@@ -23,7 +24,7 @@ function CoinDetailsPage() {
   if (isLoading) {
     return (
       <div>
-        <pageLoader />
+        <PageLoader />
       </div>
     );
   }
@@ -65,7 +66,10 @@ function CoinDetailsPage() {
           </div>
         </div>
 
-        <div className="md:w-2/3 w-full p-6">Coin Information</div>
+        <div className="md:w-2/3 w-full">
+          {" "}
+          <CoinInfoContainer coinId={coinId} />
+        </div>
       </div>
     </>
   );
